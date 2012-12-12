@@ -1887,10 +1887,13 @@ class YAxis(Axis):
         ACCEPTS: [ 'left' | 'right' ]
         """
         assert position == 'left' or position == 'right'
-        if position == 'right':
-            self.label.set_horizontalalignment('left')
+        if self.label.get_rotation_mode() == 'anchor':
+            if position == 'left':
+                self.label.set_verticalalignment('bottom')
+            else:
+                self.label.set_verticalalignment('top')
         else:
-            self.label.set_horizontalalignment('right')
+            self.label.set_horizontalalignment(position)
         self.label_position = position
 
     def _update_label_position(self, bboxes, bboxes2):
