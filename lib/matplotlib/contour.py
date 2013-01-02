@@ -250,7 +250,7 @@ class ContourLabeler:
         "Return *True* if a label is already near this location."
         for loc in self.labelXYs:
             d = np.sqrt((x - loc[0]) ** 2 + (y - loc[1]) ** 2)
-            if d < 1.2 * lw:
+            if d < 3. * lw:
                 return True
         return False
 
