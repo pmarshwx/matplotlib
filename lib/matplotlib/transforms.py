@@ -777,7 +777,7 @@ class Bbox(BboxBase):
         BboxBase.__init__(self, **kwargs)
         points = np.asarray(points, np.float_)
         if points.shape != (2, 2):
-            raise ValueError('Bbox points must be of the form ' 
+            raise ValueError('Bbox points must be of the form '
                              '"[[x0, y0], [x1, y1]]".')
         self._points = points
         self._minpos = np.array([0.0000001, 0.0000001])
@@ -1866,19 +1866,19 @@ class Affine2D(Affine2DBase):
         self.invalidate()
         return self
 
-    def skew(self, xShear, yShear):
+    def skew(self, x_shear, y_shear):
         """
         Adds a skew in place.
 
-        *xShear* and *yShear* are the shear angles along the *x*- and
+        *x_shear* and *y_shear* are the shear angles along the *x*- and
         *y*-axes, respectively, in radians.
 
         Returns *self*, so this method can easily be chained with more
         calls to :meth:`rotate`, :meth:`rotate_deg`, :meth:`translate`
         and :meth:`scale`.
         """
-        rotX = np.tan(xShear)
-        rotY = np.tan(yShear)
+        rotX = np.tan(x_shear)
+        rotY = np.tan(y_shear)
         skew_mtx = np.array(
                 [[1.0, rotX, 0.0], [rotY, 1.0, 0.0], [0.0, 0.0, 1.0]],
                 np.float_)
@@ -1886,18 +1886,18 @@ class Affine2D(Affine2DBase):
         self.invalidate()
         return self
 
-    def skew_deg(self, xShear, yShear):
+    def skew_deg(self, x_shear, y_shear):
         """
         Adds a skew in place.
 
-        *xShear* and *yShear* are the shear angles along the *x*- and
+        *x_shear* and *y_shear* are the shear angles along the *x*- and
         *y*-axes, respectively, in degrees.
 
         Returns *self*, so this method can easily be chained with more
         calls to :meth:`rotate`, :meth:`rotate_deg`, :meth:`translate`
         and :meth:`scale`.
         """
-        return self.skew(np.deg2rad(xShear), np.deg2rad(yShear))
+        return self.skew(np.deg2rad(x_shear), np.deg2rad(y_shear))
 
     def _get_is_separable(self):
         mtx = self.get_matrix()
