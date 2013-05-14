@@ -1877,10 +1877,10 @@ class Affine2D(Affine2DBase):
         calls to :meth:`rotate`, :meth:`rotate_deg`, :meth:`translate`
         and :meth:`scale`.
         """
-        rotX = np.tan(x_shear)
-        rotY = np.tan(y_shear)
+        rot_x = np.tan(x_shear)
+        rot_y = np.tan(y_shear)
         skew_mtx = np.array(
-                [[1.0, rotX, 0.0], [rotY, 1.0, 0.0], [0.0, 0.0, 1.0]],
+                [[1.0, rot_x, 0.0], [rot_y, 1.0, 0.0], [0.0, 0.0, 1.0]],
                 np.float_)
         self._mtx = np.dot(skew_mtx, self._mtx)
         self.invalidate()
